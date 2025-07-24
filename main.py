@@ -1,7 +1,7 @@
 class Program:
     @staticmethod
     def main():
-        cantidad_clientes=int(input("Cuantos clientes desea ingresar?"))
+        cantidad_clientes=int(input("Cuantos clientes desea ingresar?: "))
         clientes ={}
         for i in range(cantidad_clientes):
             print(f"\nCliente #: {i+1}")
@@ -10,7 +10,7 @@ class Program:
             cantidad_destinos=int(input("Cuantos destinos desea registrar? (1-5)"))
             destinos = []
             for j in range(cantidad_destinos):
-                destino=input(f"\nIngrese destino #: {j+1}")
+                destino=input(f"\nIngrese destino #{j+1}: ")
                 destinos.append(destino)
 
             clientes[codigo_cliente]={"nombre": nombre_cliente, "destinos_visitados":destinos}
@@ -18,7 +18,7 @@ class Program:
         for codigo, datos in clientes.items():
             print(f"\nCodigo de cliente: {codigo}, Nombre: {datos["nombre"]}, Destinos visitados: ")
             for destinos in datos["destinos_visitados"]:
-                print(destinos)
+                print(f"- {destinos}")
 
         print(f"El cliente con mas destinos visitados es: {Program.cliente_con_mas_destinos(clientes)}")
         total_destinos=Program.contar_clientes(clientes)
@@ -45,3 +45,4 @@ class Program:
                 cliente_mas_viajero = (codigo, datos["nombre"], cantidad)
 
         return cliente_mas_viajero
+Program.main()
