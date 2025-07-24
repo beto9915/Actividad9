@@ -14,7 +14,13 @@ class Program:
                 destinos.append(destino)
 
             clientes[codigo_cliente]={"nombre": nombre_cliente, "destinos_visitados":destinos}
-        Program.cliente_con_mas_destinos(clientes)
+        print("=================LISTA DE CLIENTES REGISTRADOS=================")
+        for codigo, datos in clientes.items():
+            print(f"\nCodigo de cliente: {codigo}, Nombre: {datos["nombre"]}, Destinos visitados: ")
+            for destinos in datos["destinos_visitados"]:
+                print(destinos)
+
+        print(f"El cliente con mas destinos visitados es: {Program.cliente_con_mas_destinos(clientes)}")
         total_destinos=Program.contar_clientes(clientes)
         print(f"\nEl total de destinos registrado es de: {total_destinos}")
     @staticmethod
