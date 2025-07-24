@@ -14,9 +14,12 @@ class Program:
                 destinos.append(destino)
 
             clientes[codigo_cliente]={"nombre": nombre_cliente, "destinos_visitados":destinos}
+        Program.cliente_con_mas_destinos(clientes)
         total_destinos=Program.contar_clientes(clientes)
+        print(f"\nEl total de destinos registrado es de: {total_destinos}")
+    @staticmethod
     def contar_clientes(clientes, codigos=None, i=0):
-        if codigos==None:
+        if codigos is None:
             codigos=list(clientes.keys())
         if i==len(codigos):
             return 0
@@ -24,3 +27,15 @@ class Program:
             cliente=clientes[codigos[i]]
             destinos=len(cliente["destinos_visitados"])
             return destinos+Program.contar_clientes(clientes, codigos, i+1)
+    @staticmethod
+    def cliente_con_mas_destinos(clientes):
+        max_destinos = -1
+        cliente_mas_viajero = None
+
+        for codigo, datos in clientes.items():
+            cantidad = len(datos["destinos_visitados"])
+            if cantidad > max_destinos:
+                max_destinos = cantidad
+                cliente_mas_viajero = (codigo, datos["nombre"], cantidad)
+
+        return cliente_mas_viajero
